@@ -1,0 +1,24 @@
+body{
+    background-color: #eee;
+}
+header{
+    /* background-image: linear-gradient(rgba(0,0,0, 0.5) 0% 100%) , url(../images/baby-clothes-hero-image.webp); */
+    background-image: linear-gradient(rgba(0,0,0,0.5) 0 100%) , url(../images/71ufMFCg0mL._AC_SL1500_.jpg);
+    
+    background-size: cover;
+    background-position: center top;
+}
+
+
+.form-control-custom:focus {
+    border-color: #7e7e7e;
+    box-shadow: 0 0 0 .25rem rgb(163 176 194 / 25%);
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+/* tr > th , tr > td {
+    white-space: nowrap;
+} */

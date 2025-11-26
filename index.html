@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>CRUD</title>
+</head>
+<body>
+
+
+    <!-- 1- Welcome SectionD -->
+    <header id="welcomeSection" class="min-vh-100 d-flex justify-content-center align-items-center">
+        <div class="content text-dark text-center">
+            <h1 class="mb-3">Welcome in our CRUB</h1>
+            <button id="goSystemBtn" class="btn btn-dark">Go to CRUD</button>
+        </div>
+    </header>
+
+    <!-- 2- CRUD Section -->
+    <section id="crudSection" class="d-none">
+        <div class="container">
+            <div class="row">
+                <!-- No products message -->
+                <div id="noProduct" class="d-flex justify-content-center align-items-center min-vh-100">
+                    <div class="content w-100 text-center">
+                        <div class="alert alert-dark text-center">
+                            No products added yet.
+                        </div>
+                        <button class="btn btn-outline-dark add-product-btn">Add Product to CRUD</button>
+                    </div>
+
+                </div>
+
+                <!-- Products -->
+                <div id="productsAvailability" class=" d-none mt-5">
+                    <div class="row pt-5">
+                        <div class="col-md-9">
+                            <h3>Products</h3>
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-dark add-product-btn">Add Product to CRUD</button>
+                            <button id="clearAllBtn" class="btn btn-outline-danger">Clear CRUD</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="table-responsive rounded-3">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Image</th>
+                                    <th class="text-nowrap">Product Name</th>
+                                    <th>Price</th>
+                                    <th>Category</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productData"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Product Modal -->
+    <div class="modal" tabindex="-1" id="productModal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="">
+                    <div class="modal-body">
+                        <!-- <p>Modal body text goes here.</p> -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control form-control-custom" id="productName" placeholder="Enter Product Name">
+                            <label for="productName">Product Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="number" class="form-control form-control-custom" id="productPrice" placeholder="Enter Product Price">
+                            <label for="productPrice">Product Price</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="file" class="form-control form-control-custom" id="productImage" placeholder="Enter Product Image">
+                            <label for="productImage">Product Image</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input list="category" type="search" class="form-control form-control-custom" id="productCetagory" placeholder="Enter Product Image">
+                            <label for="productCetagory">Product Category</label>
+                            <datalist id="category">
+                                <option value="Women"/>
+                                <option value="Men"/>
+                                <option value="Children"/>
+                            </datalist>
+                        </div>
+
+                        <div class="form-floating">
+                            <textarea class="form-control form-control-custom" placeholder="Leave a description here" id="productDescription" style="height: 100px"></textarea>
+                            <label for="productDescription">Product Description</label>
+                        </div>
+                        
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button class="btn btn-dark" id="saveProductBtn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Are you sure?</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p id="confirmMessage">Do you want to proceed?</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger" id="confirmYesBtn">Yes</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js" defer></script>
+
+</body>
+
+</html>
