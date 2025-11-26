@@ -5,6 +5,7 @@ const goBtn = document.getElementById("goSystemBtn");
 const addProductBtn = document.querySelectorAll(".add-product-btn");
 const saveBtn = document.getElementById("saveProductBtn");
 const clearAllBtn = document.getElementById("clearAllBtn");
+const searchInput = document.getElementById("searchInput");
 
 
 // Modals => Product Modal , Confirm Modal
@@ -189,8 +190,6 @@ function displayProducts(){
                     <a class="text-info text-decoration-none cursor-pointer me-3" onclick="editProduct(${i})"><i class="fa-regular fa-pen-to-square"></i>Edit</a>
                     <a class="text-danger text-decoration-none cursor-pointer" onclick="deleteProduct(${i})"><i class="fa-solid fa-trash-can"></i>Delete</a>
                 </td>
-                <td></td>
-                <td></td>
             </tr>
         `;
     }
@@ -286,3 +285,41 @@ inputProductImage.addEventListener("change", () => validate("productImage")); //
 inputProductCetagory.addEventListener("input", () => validate("productCetagory"));
 inputProductDescription.addEventListener("input", () => validate("productDescription"));
 // /.validations
+
+
+
+// saerch
+searchInput.addEventListener("input", () => {
+    let term = searchInput.value.trim();
+    let productBox = ``;
+    for(let i=0, len=productsList.length ; i<len; i++){
+        if(productsList[i].name.toLowerCase().includes(term.toLowerCase()) || productsList[i].category.toLowerCase().includes(term.toLowerCase()) || +productsList[i].price == +term){
+            productBox += `
+                <tr>
+                    <td>${i + 1}</td>
+                    <td><img src="${productsList[i].image}" alt="${productsList[i].name}"  style="width: 70px;" onerror="this.onerror=null; this.src='images/placeholder.png'"></td>
+                    <td>${productsList[i].name}</td>
+                    <td>${productsList[i].price}</td>
+                    <td>${productsList[i].category}</td>
+                    <td>${productsList[i].description}</td>
+                    <td class="text-nowrap">
+                        <a class="text-info text-decoration-none cursor-pointer me-3" onclick="editProduct(${i})"><i class="fa-regular fa-pen-to-square"></i>Edit</a>
+                        <a class="text-danger text-decoration-none cursor-pointer" onclick="deleteProduct(${i})"><i class="fa-solid fa-trash-can"></i>Delete</a>
+                    </td>
+                </tr>
+            `;
+        }
+    }
+    if(productBox == ""){
+        productBox = `
+            <tr>
+                <td colspan="7" class="text-center text-secondary fs-4 align-middle" style="height: 100px; vertical-align: middle;">
+                    <i class="fa-regular fa-face-sad-cry me-2"></i>No product found
+                </td>
+            </tr>
+        `
+    }
+    document.getElementById("productData").innerHTML = productBox;
+    productBox = null;
+})
+// saerch
