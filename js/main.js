@@ -125,10 +125,10 @@ function deleteProduct(index){
 
 // Edit Product
 function editProduct(index){
+    clearInputs();
     isEditing = true;
     actionIndex = index;
     const product = productsList[index];
-    
     inputProductName.value = product.name;
     inputProductPrice.value = product.price;
     inputProductCetagory.value = product.category;
@@ -143,6 +143,7 @@ function editProduct(index){
     // setTimeout(() => validateAll(), 100);
 
 }
+// /.Edit Product
 
 // Confirm save => clear or delete
 confirmYesBtn.addEventListener("click", () => {
